@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+@property --rad1-x {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 16%;
+}
+@property --rad1-y {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 22%;
+}
+@property --rad2-x {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 10%;
+}
+@property --rad2-y {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 56%;
+}
+@property --rad3-x {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 76%;
+}
+@property --rad3-y {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 65%;
+}
+.container {
+  width: min(375px, 100%);
+  height: min(460px, 100vh);
+  background-color: #036316;
+  background-image: radial-gradient(
+      at var(--rad1-x) var(--rad1-y),
+      hsla(237, 93%, 66%, 1) 0,
+      hsla(237, 93%, 66%, 0) 50%
+    ),
+    radial-gradient(
+      at var(--rad2-x) var(--rad2-y),
+      hsla(126, 88%, 64%, 1) 0,
+      hsla(126, 88%, 64%, 0) 50%
+    ),
+    radial-gradient(
+      at var(--rad3-x) var(--rad3-y),
+      hsla(297, 93%, 55%, 1) 0,
+      hsla(297, 93%, 55%, 0) 50%
+    );
+}
