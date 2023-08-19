@@ -2,6 +2,9 @@
   margin: 0;
   padding: 0;
 }
+body {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
 @property --rad1-x {
   syntax: '<percentage>';
   inherits: false;
@@ -63,7 +66,7 @@
   initial-value: 120;
 }
 .overflow {
-  /*overflow: hidden;*/
+  overflow: hidden;
   width: 300px;
   height: 500px;
   outline: 2px solid red;
@@ -87,4 +90,37 @@
       hsla(var(--rad3-hue), 93%, 55%, 1) 0,
       hsla(var(--rad3-hue), 93%, 55%, 0) var(--rad3-radio)
     );
+
+  z-index: -1;
+  transform: scale(2) rotate(-238deg);
+  transition: all 1s linear
+}
+body {
+  display: flex;
+  justify-content: center;
+}
+.overflow {
+  display: grid;
+  grid-template: 1fr/300px;
+}
+.content,
+.container {
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+}
+.container {
+  z-index: -1;
+}
+.content {
+  color: #fff;
+  background: linear-gradient(to bottom, rgba(0,0,0,.8) 0%, rgba(0,0,0,.2) 180px, rgba(0,0,0,.2) calc(100% - 180px), rgba(0,0,0,.8) 100%);
+  display: grid;
+  grid-template-columns: 1fr;
+  place-items: center;
+  text-align: center;
+  .buttons {
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 1fr;
+  }
 }
