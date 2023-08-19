@@ -13,6 +13,16 @@
   inherits: false;
   initial-value: 22%;
 }
+@property --rad1-radio {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 70%;
+}
+@property --rad1-hue {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 200;
+}
 @property --rad2-x {
   syntax: "<percentage>";
   inherits: false;
@@ -22,6 +32,16 @@
   syntax: "<percentage>";
   inherits: false;
   initial-value: 56%;
+}
+@property --rad2-radio {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 70%;
+}
+@property --rad2-hue {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 160;
 }
 @property --rad3-x {
   syntax: "<percentage>";
@@ -33,11 +53,28 @@
   inherits: false;
   initial-value: 65%;
 }
+@property --rad3-radio {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 70%;
+}
+@property --rad3-hue {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 120;
+}
+.overflow {
+  /*overflow: hidden;*/
+  width: 300px;
+  height: 500px;
+  outline: 2px solid red;
+}
+
 .container {
-  width: min(375px, 100%);
-  height: min(460px, 100vh);
+  width: 100%;
+  height: 100%;
   background-color: #036316;
-  background-image: radial-gradient(at var(--rad1-x) var(--rad1-y), hsl(237, 93%, 66%) 0, hsla(237, 93%, 66%, 0) 50%), radial-gradient(at var(--rad2-x) var(--rad2-y), hsl(126, 88%, 64%) 0, hsla(126, 88%, 64%, 0) 50%), radial-gradient(at var(--rad3-x) var(--rad3-y), hsl(297, 93%, 55%) 0, hsla(297, 93%, 55%, 0) 50%);
+  background-image: radial-gradient(at var(--rad1-x) var(--rad1-y), hsla(var(--rad1-hue), 93%, 66%, 1) 0, hsla(var(--rad1-hue), 93%, 66%, 0) var(--rad1-radio)), radial-gradient(at var(--rad2-x) var(--rad2-y), hsla(var(--rad2-hue), 88%, 64%, 1) 0, hsla(var(--rad2-hue), 88%, 64%, 0) var(--rad2-radio)), radial-gradient(at var(--rad3-x) var(--rad3-y), hsla(var(--rad3-hue), 93%, 55%, 1) 0, hsla(var(--rad3-hue), 93%, 55%, 0) var(--rad3-radio));
 }
 
 /*# sourceMappingURL=style.css.map */
