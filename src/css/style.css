@@ -4,7 +4,9 @@
 }
 
 body {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
 }
 
 @property --rad1-x {
@@ -69,53 +71,57 @@ body {
 }
 .overflow {
   overflow: hidden;
-  width: 300px;
-  height: 500px;
-  outline: 2px solid red;
+  max-width: 100%;
+  height: 98vh;
+  min-height: 400px;
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.8) 120%);
 }
 
 .container {
   width: 100%;
   height: 100%;
-  background-color: #036316;
+  background-color: rebeccapurple;
   background-image: radial-gradient(at var(--rad1-x) var(--rad1-y), hsla(var(--rad1-hue), 93%, 66%, 1) 0, hsla(var(--rad1-hue), 93%, 66%, 0) var(--rad1-radio)), radial-gradient(at var(--rad2-x) var(--rad2-y), hsla(var(--rad2-hue), 88%, 64%, 1) 0, hsla(var(--rad2-hue), 88%, 64%, 0) var(--rad2-radio)), radial-gradient(at var(--rad3-x) var(--rad3-y), hsla(var(--rad3-hue), 93%, 55%, 1) 0, hsla(var(--rad3-hue), 93%, 55%, 0) var(--rad3-radio));
   z-index: -1;
-  transform: scale(2) rotate(-238deg);
   transition: all 1s linear;
+  animation: hue 6s linear infinite forwards, radio 6s linear infinite forwards;
+  mix-blend-mode: multiply;
 }
 
-body {
-  display: flex;
-  justify-content: center;
+@keyframes hue {
+  from {
+    --rad1-hue: 200;
+    --rad2-hue: 160;
+    --rad3-hue: 120;
+  }
+  50% {
+    --rad1-hue: 250;
+    --rad2-hue: 100;
+    --rad3-hue: 50;
+  }
+  to {
+    --rad1-hue: 200;
+    --rad2-hue: 160;
+    --rad3-hue: 120;
+  }
 }
-
-.overflow {
-  display: grid;
-  grid-template: 1fr/300px;
-}
-
-.content,
-.container {
-  grid-column: 1/-1;
-  grid-row: 1/-1;
-}
-
-.container {
-  z-index: -1;
-}
-
-.content {
-  color: #fff;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 180px, rgba(0, 0, 0, 0.2) calc(100% - 180px), rgba(0, 0, 0, 0.8) 100%);
-  display: grid;
-  grid-template-columns: 1fr;
-  place-items: center;
-  text-align: center;
-}
-.content .buttons {
-  display: grid;
-  place-items: center;
-  grid-template-columns: 1fr 1fr;
+@keyframes radio {
+  from {
+    --rad1-radio: 70;
+    --rad2-radio: 70;
+    --rad3-radio: 70;
+  }
+  50% {
+    --rad1-radio: 90;
+    --rad2-radio: 40;
+    --rad3-radio: 120;
+  }
+  to {
+    --rad1-radio: 70;
+    --rad2-radio: 70;
+    --rad3-radio: 70;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
