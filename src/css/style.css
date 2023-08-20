@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+body {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
 @property --rad1-x {
   syntax: "<percentage>";
   inherits: false;
@@ -12,6 +16,16 @@
   syntax: "<percentage>";
   inherits: false;
   initial-value: 22%;
+}
+@property --rad1-radio {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 70%;
+}
+@property --rad1-hue {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 200;
 }
 @property --rad2-x {
   syntax: "<percentage>";
@@ -23,6 +37,16 @@
   inherits: false;
   initial-value: 56%;
 }
+@property --rad2-radio {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 70%;
+}
+@property --rad2-hue {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 160;
+}
 @property --rad3-x {
   syntax: "<percentage>";
   inherits: false;
@@ -33,11 +57,65 @@
   inherits: false;
   initial-value: 65%;
 }
+@property --rad3-radio {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 70%;
+}
+@property --rad3-hue {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 120;
+}
+.overflow {
+  overflow: hidden;
+  width: 300px;
+  height: 500px;
+  outline: 2px solid red;
+}
+
 .container {
-  width: min(375px, 100%);
-  height: min(460px, 100vh);
+  width: 100%;
+  height: 100%;
   background-color: #036316;
-  background-image: radial-gradient(at var(--rad1-x) var(--rad1-y), hsl(237, 93%, 66%) 0, hsla(237, 93%, 66%, 0) 50%), radial-gradient(at var(--rad2-x) var(--rad2-y), hsl(126, 88%, 64%) 0, hsla(126, 88%, 64%, 0) 50%), radial-gradient(at var(--rad3-x) var(--rad3-y), hsl(297, 93%, 55%) 0, hsla(297, 93%, 55%, 0) 50%);
+  background-image: radial-gradient(at var(--rad1-x) var(--rad1-y), hsla(var(--rad1-hue), 93%, 66%, 1) 0, hsla(var(--rad1-hue), 93%, 66%, 0) var(--rad1-radio)), radial-gradient(at var(--rad2-x) var(--rad2-y), hsla(var(--rad2-hue), 88%, 64%, 1) 0, hsla(var(--rad2-hue), 88%, 64%, 0) var(--rad2-radio)), radial-gradient(at var(--rad3-x) var(--rad3-y), hsla(var(--rad3-hue), 93%, 55%, 1) 0, hsla(var(--rad3-hue), 93%, 55%, 0) var(--rad3-radio));
+  z-index: -1;
+  transform: scale(2) rotate(-238deg);
+  transition: all 1s linear;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.overflow {
+  display: grid;
+  grid-template: 1fr/300px;
+}
+
+.content,
+.container {
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+}
+
+.container {
+  z-index: -1;
+}
+
+.content {
+  color: #fff;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 180px, rgba(0, 0, 0, 0.2) calc(100% - 180px), rgba(0, 0, 0, 0.8) 100%);
+  display: grid;
+  grid-template-columns: 1fr;
+  place-items: center;
+  text-align: center;
+}
+.content .buttons {
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr 1fr;
 }
 
 /*# sourceMappingURL=style.css.map */
